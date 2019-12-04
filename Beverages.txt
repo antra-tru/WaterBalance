@@ -1,0 +1,7 @@
+Water 1
+Coffee 0.3
+Tea 0.8
+SoftDrink -0.4
+Wine -0.7
+Beer -0.5
+StrongAlcohol -1.8
