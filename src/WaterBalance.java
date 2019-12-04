@@ -13,16 +13,17 @@ public class WaterBalance {
 		double weight = sc.nextDouble();
 		System.out.println("Type Your age: ");
 		int age = sc.nextInt();
-		
-		double waterBalance = ((((weight/0.45359)/2.2)* age)/28.3)/0.03520;
-		
+
+		double waterBalance = Math.ceil(((((weight / 0.45359) / 2.2) * age) / 28.3) / 0.03520);
+
 		System.out.println("Your everyday water intake should be: " + waterBalance + " ml");
 		System.out.println("\n");
 
 		boolean userExited = false;
 		while (!userExited) {
 
-			System.out.println("What did You drink? (1-Water; 2-Coffee; 3-Tea; 4-SoftDrink; 5-Wine; 6-Beer; 7-StrongAlcohol; 0-EXIT PROGRAM!): ");
+			System.out.println(
+					"What did You drink? (1-Water; 2-Coffee; 3-Tea; 4-SoftDrink; 5-Wine; 6-Beer; 7-StrongAlcohol; 0-EXIT PROGRAM!): ");
 			int beverageType = sc.nextInt();
 
 			if (beverageType == 0) {
@@ -45,9 +46,16 @@ public class WaterBalance {
 				if (userIntake < waterBalance) {
 					System.out.println("Today You still have to drink " + stillToDrink + " ml. Keep going!");
 					waterBalance = stillToDrink;
+
 				} else {
+					/* if (stillToDrink > waterBalance) { */
+				//	double overTake = stillToDrink - waterBalance;
+					double overTake = userIntake - waterBalance;
+					double extraWine = Math.ceil((overTake / 0.7) - overTake);
+					System.out.println("Congratulations! You reached Your daily GOAL! You can still drink " + extraWine + " ml of wine. CHEERS!");
+					/* } else { */
 					userExited = true;
-					System.out.println(" Congratulations! You reached Your daily GOAL! ");
+					//System.out.println("Congratulations! You reached Your daily GOAL!");
 				}
 			}
 		}
